@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>視覺藝術</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap');
+    body {padding: 0;margin: 0; overflow: hidden; background: #000; box-sizing: border-box;cursor: none;}
+    canvas { display: block; }
+    .man{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      max-width: 1000px;
+      overflow: hidden;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translateY(10px);
+      }
+    
+    }
+    .text{
+      font-family: "Cabin Sketch", sans-serif;
+      position: absolute;
+      top: 40%;
+      right: 0;
+      transform: translateY(-40%);
+      display: inline-block;
+      font-size: 5.5rem;
+      color: #FFF;
+      font-weight: bold;
+      text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+      margin-right: 15%;
+      white-space: pre;
+      border-right: 3px solid #fff; /* 游標 */
+      padding-right: 10px; 
+      animation: blink 0.7s steps(1) infinite; /* 游標閃爍 */
+      line-height: 1;
+    }
+    
+    .cursor-effect {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      pointer-events: none;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff 60%, #00f0ff 100%);
+      box-shadow: 0 0 40px 20px #00f0ff, 0 0 80px 40px #fff;
+      transform: translate(-50%, -50%) scale(1);
+      filter: blur(10px);
+      
+      z-index: 9999;
+      animation: cursorGlow 5s infinite alternate;
+    }
+ 
+    /*手機不給瀏覽*/
+    .mobile-warning {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #111;
+      color: #fff;
+      font-size: 2rem;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      
+      p{
+        padding: 0 20px;
+        letter-spacing: 3px;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent; /* 閃爍效果 */
+      }
+    }
+    @keyframes cursorGlow {
+      0% {
+        box-shadow: 0 0 40px 20px #00f0ff, 0 0 80px 40px #fff;
+        background: radial-gradient(circle, #fff 60%, #00f0ff 100%);
+      }
+      100% {
+        box-shadow: 0 0 80px 40px #fcce51, 0 0 120px 60px #fff;
+        background: radial-gradient(circle, #fff 60%, #fcce51 100%);
+      }
+    }
+
+
+    @media(max-width:1024px){
+      .text{
+         top: 50%;
+         transform: translateY(-50%);
+         margin-right: 5%;
+      }
+    }
+    @media(max-width:768px){
+        body > *:not(.mobile-warning) {
+          display: none !important;
+        }
+        .mobile-warning {
+          display: flex !important;
+        }
+    }
+  </style>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <div class="man">
+    <img  src="man.png" alt="">
+  </div>
+  <h1 class="text"></h1>
+   <div class="cursor-effect"></div>
+
+   <!--手機不給瀏覽-->
+   <div class="mobile-warning">
+    <p>螢幕寬度過小，影響視覺體驗，請改用平板或電腦裝置進行瀏覽。</p>
+  </div>
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.178.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.178.0/examples/jsm/"
+    }
+  }
+</script>
+<script type="module" src="main.js"></script>
+</body>
+</html>
