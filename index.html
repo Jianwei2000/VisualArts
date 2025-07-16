@@ -13,13 +13,13 @@
       left: 0;
       max-width: 1000px;
       overflow: hidden;
+      
       img{
         width: 100%;
         height: 100%;
         object-fit: cover;
         transform: translateY(10px);
       }
-    
     }
     .text{
       font-family: "Cabin Sketch", sans-serif;
@@ -57,24 +57,7 @@
       animation: cursorGlow 5s infinite alternate;
     }
  
-    /*手機不給瀏覽*/
-    .mobile-warning {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      background: #111;
-      color: #fff;
-      font-size: 2rem;
-      align-items: center;
-      justify-content: center;
-      text-align: left;
-      
-      p{
-        padding: 0 20px;
-        letter-spacing: 3px;
-      }
-    }
+    
 
     @keyframes blink {
       50% {
@@ -101,11 +84,16 @@
       }
     }
     @media(max-width:768px){
-        body > *:not(.mobile-warning) {
-          display: none !important;
+        .text{
+          top: 20%;
+          font-size: 3.5rem;
         }
-        .mobile-warning {
-          display: flex !important;
+        .cursor-effect{
+          top: auto;
+          left: auto;
+
+          right: 50px;
+          bottom: 40px;
         }
     }
   </style>
@@ -118,10 +106,7 @@
   <h1 class="text"></h1>
    <div class="cursor-effect"></div>
 
-   <!--手機不給瀏覽-->
-   <div class="mobile-warning">
-    <p>螢幕寬度過小，影響視覺體驗，請改用平板或電腦裝置進行瀏覽。</p>
-  </div>
+  
 <script type="importmap">
   {
     "imports": {

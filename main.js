@@ -138,14 +138,3 @@ function typeNext() {
 }
 
 
-// 檢查螢幕寬度是否小於768px
-function checkMobile() {
-  const warning = document.querySelector('.mobile-warning');
-  if (window.innerWidth <= 768) {
-    warning.style.display = 'flex';
-  } else {
-    warning.style.display = 'none';
-  }
-}
-window.addEventListener('resize', checkMobile);
-window.addEventListener('DOMContentLoaded', checkMobile);
