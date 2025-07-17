@@ -137,4 +137,10 @@ function typeNext() {
   }
 }
 
-
+// 音樂播放事件
+document.body.addEventListener('click', function() {
+  const bgm = document.getElementById('bgm');
+  if (bgm.paused) {
+    bgm.play();
+  }
+}, { once: true });
