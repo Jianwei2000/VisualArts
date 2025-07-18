@@ -66,22 +66,25 @@ for (let p = 0; p < 150; p++) {
 
 // 滑鼠移動事件
 const mouse = new THREE.Vector2();
-window.addEventListener('mousemove', (event) => {
+if (window.innerWidth > 768) {
 
-mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-//相機視角移動
-camera.position.set(mouse.x * 50 ,mouse.y * 50 );
-//人物移動
-const man = document.querySelector(".man");
-man.style.transform = `translateX(${mouse.x*-100}px)`;
-//cursor特效
-const cursor = document.querySelector('.cursor-effect');
-cursor.style.left = `${event.clientX}px`;
-cursor.style.top = `${event.clientY}px`;
-
-});
+  window.addEventListener('mousemove', (event) => {
+  
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  
+  //相機視角移動
+  camera.position.set(mouse.x * 50 ,mouse.y * 50 );
+  //人物移動
+  const man = document.querySelector(".man");
+  man.style.transform = `translateX(${mouse.x*-100}px)`;
+  //cursor特效
+  const cursor = document.querySelector('.cursor-effect');
+  cursor.style.left = `${event.clientX}px`;
+  cursor.style.top = `${event.clientY}px`;
+  
+  });
+}
 
 //resize不讓畫面跑版
 window.addEventListener('resize', () => {
